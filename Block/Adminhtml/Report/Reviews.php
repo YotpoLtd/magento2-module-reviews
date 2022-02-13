@@ -349,7 +349,7 @@ class Reviews extends Template
         } else {
             $button->setLabel(__('Launch Yotpo'));
             $button->setOnClick(
-                "window.open('https://yap.yotpo.com/#/preferredAppKey={$appKey}','_blank');"
+                "window.open('https://reviews.yotpo.com','_blank');"
             );
         }
 
