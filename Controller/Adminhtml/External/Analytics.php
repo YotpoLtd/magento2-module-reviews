@@ -47,7 +47,7 @@ class Analytics extends Action
             // phpcs:ignore
             $url = 'https://yap.yotpo.com/?utm_source=MagentoAdmin_ReportingAnalytics#/tools/conversions_dashboard/engagement';
         } else {
-            $url = 'https://www.yotpo.com/integrations/magento/?utm_source=MagentoAdmin_ReportingAnalytics';
+            $url = 'https://www.yotpo.com/integrations/adobe-commerce-magento/?utm_source=MagentoAdmin_ReportingAnalytics';
         }
 
         /** @var Redirect $resultRedirect */

@@ -344,7 +344,7 @@ class Reviews extends Template
         if (!($appKey = $this->getAppKey())) {
             $button->setLabel(__('Get Started'));
             $button->setOnClick(
-                "window.open('https://www.yotpo.com/integrations/magento/?utm_source={$utm}','_blank');"
+                "window.open('https://www.yotpo.com/integrations/adobe-commerce-magento/?utm_source={$utm}','_blank');"
             );
         } else {
             $button->setLabel(__('Launch Yotpo'));
