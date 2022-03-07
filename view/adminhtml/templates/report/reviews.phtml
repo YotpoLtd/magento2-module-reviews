@@ -61,7 +61,7 @@ $escaper = $escaper ?? $block;
                 </div>
             <?php endif; ?>
         </div>
-        <div><?= $block->getLounchYotpoButtonHtml() ?></div>
+        <div><?= $block->buildLaunchYotpoButtonHtml() ?></div>
         <div>
             <a class="yotpo-settings"
                href="<?= $escaper->escapeUrl($block->getYotpoConfigUrl()) ?>"
@@ -88,7 +88,7 @@ $escaper = $escaper ?? $block;
             <p><?= $escaper->escapeHtml(__("Connect your Yotpo account to your store to accelerate growth")) ?></p>
             <?php // phpcs:ignore ?>
             <p><?= $escaper->escapeHtml(__("with a full suite of solutions for customer reviews and visual marketing.")) ?></p>
-            <div><?= $block->getLounchYotpoButtonHtml('MagentoAdmin_reviews') ?></div>
+            <div><?= $block->buildLaunchYotpoButtonHtml('MagentoAdmin_reviews') ?></div>
             <div class="already-have-account">
                 <?= $escaper->escapeHtml(__("Already have an account?")) ?>
                 <?php // phpcs:ignore ?>

@@ -326,7 +326,7 @@ class Reviews extends Template
      * @return string
      * @throws LocalizedException
      */
-    public function getLounchYotpoButtonHtml(string $utm = 'MagentoAdmin_Dashboard'): string
+    public function buildLaunchYotpoButtonHtml(string $utm = 'MagentoAdmin_Dashboard'): string
     {
         $this->initialize();
         /**

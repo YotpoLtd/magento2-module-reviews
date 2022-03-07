@@ -29,14 +29,14 @@ $escaper = $escaper ?? $block;
             </div>
         <?php endif; ?>
     </div>
-    <div><?= $block->getLounchYotpoButtonHtml('MagentoAdmin_Dashboard') ?></div>
+    <div><?= $block->buildLaunchYotpoButtonHtml('MagentoAdmin_Dashboard') ?></div>
 <?php else: ?>
     <div class="yotpo-reviews-totals-no-appkey">
         <div class="collect-and-leverage">
             <?= $escaper->escapeHtml(__("Collect and leverage customer reviews, ratings, and Q&A")) ?><br>
             <?= $escaper->escapeHtml(__("with Yotpo's AI-powered tools and on-site widgets.")) ?>
         </div>
-        <div><?= $block->getLounchYotpoButtonHtml('MagentoAdmin_Dashboard') ?></div>
+        <div><?= $block->buildLaunchYotpoButtonHtml('MagentoAdmin_Dashboard') ?></div>
         <div class="already-have-account">
             <?= $escaper->escapeHtml(__("Already have an account?")) ?>
             <a href="<?= $escaper->escapeUrl($block->getYotpoConfigUrl()) ?>"
