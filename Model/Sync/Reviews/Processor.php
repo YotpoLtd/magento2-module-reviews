@@ -53,42 +53,42 @@ class Processor extends AbstractJobs
      * Get Reviews Metrics
      *
      * @param int $storeId
-     * @param string|null $fromDate
-     * @param string|null $toDate
+     * @param string|null $startingDate
+     * @param string|null $endingDate
      * @return array<mixed>
      */
-    public function getMetrics(int $storeId, string $fromDate = null, string $toDate = null): array
+    public function getMetrics(int $storeId, string $startingDate = null, string $endingDate = null): array
     {
         $metricsResponse = [];
         try {
             $this->emulateFrontendArea($storeId);
 
-            $data = [
+            $requestData = [
                 'utoken'            => '',
                 'platform'          => 'magento2',
                 'extension_version' => $this->yotpoConfig->getModuleVersion(),
             ];
-            if ($fromDate) {
-                $data['since'] = $fromDate;
+            if ($startingDate) {
+                $requestData['since'] = $startingDate;
             }
-            if ($toDate) {
-                $data['until'] = $toDate;
+            if ($endingDate) {
+                $requestData['until'] = $endingDate;
             }
 
-            $endPoint = $this->yotpoConfig->getEndpoint('metrics');
-            $data['entityLog'] = 'general';
+            $endpoint = $this->yotpoConfig->getEndpoint('metrics');
+            $requestData['entityLog'] = 'general';
 
-            $response = $this->yotpoSyncMain->sync('GET', $endPoint, $data);
+            $apiResponse = $this->yotpoSyncMain->sync('GET', $endpoint, $requestData);
 
-            if ($response['is_success']) {
-                $metricsResponse = (array)$response['response']['response'];
+            if ($apiResponse['is_success']) {
+                $metricsResponse = (array)$apiResponse['response']['response'];
             }
 
             $this->stopEnvironmentEmulation();
             $this->logger->info(__('API Issue - Reason is %1', 323232));
 
-        } catch (\Exception $e) {
-            $this->logger->info(__('API Issue - Reason is %1', $e->getMessage()));
+        } catch (\Exception $exception) {
+            $this->logger->info(__('API Issue - Reason is %1', $exception->getMessage()));
         }
 
         return $metricsResponse;
