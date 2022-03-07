@@ -83,10 +83,10 @@ class Processor extends AbstractJobs
             if ($apiResponse['is_success']) {
                 $metricsResponse = (array)$apiResponse['response']['response'];
             }
-
-            $this->stopEnvironmentEmulation();
         } catch (\Exception $exception) {
             $this->logger->info(__('API Issue - Reason is %1', $exception->getMessage()));
+        } finally {
+            $this->stopEnvironmentEmulation();
         }
 
         return $metricsResponse;
