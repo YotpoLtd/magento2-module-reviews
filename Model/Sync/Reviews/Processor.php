@@ -59,7 +59,7 @@ class Processor extends AbstractJobs
      */
     public function getMetrics(int $storeId, string $fromDate = null, string $toDate = null): array
     {
-        $return = [];
+        $metricsResponse = [];
         try {
             $this->emulateFrontendArea($storeId);
 
@@ -81,7 +81,7 @@ class Processor extends AbstractJobs
             $response = $this->yotpoSyncMain->sync('GET', $endPoint, $data);
 
             if ($response['is_success']) {
-                $return = (array)$response['response']['response'];
+                $metricsResponse = (array)$response['response']['response'];
             }
 
             $this->stopEnvironmentEmulation();
@@ -91,6 +91,6 @@ class Processor extends AbstractJobs
             $this->logger->info(__('API Issue - Reason is %1', $e->getMessage()));
         }
 
-        return $return;
+        return $metricsResponse;
     }
 }
