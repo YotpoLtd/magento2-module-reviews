@@ -85,8 +85,6 @@ class Processor extends AbstractJobs
             }
 
             $this->stopEnvironmentEmulation();
-            $this->logger->info(__('API Issue - Reason is %1', 323232));
-
         } catch (\Exception $exception) {
             $this->logger->info(__('API Issue - Reason is %1', $exception->getMessage()));
         }
