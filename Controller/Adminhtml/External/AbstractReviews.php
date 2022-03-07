@@ -47,9 +47,9 @@ class AbstractReviews
         }
         if (!$this->yotpoConfig->isActivated($scopeId, $scope)) {
             $scope = ScopeInterface::SCOPE_STORE;
-            foreach ((array)$this->yotpoConfig->getAllStoreIds(true) as $scopeId) {
-                if ($this->yotpoConfig->isActivated($scopeId, $scope)) {
-                    $appKey = $this->yotpoConfig->getAppKey($scopeId, $scope);
+            foreach ((array)$this->yotpoConfig->getAllStoreIds(true) as $storeId) {
+                if ($this->yotpoConfig->isActivated($storeId, $scope)) {
+                    $appKey = $this->yotpoConfig->getAppKey($storeId, $scope);
                     break;
                 }
             }
