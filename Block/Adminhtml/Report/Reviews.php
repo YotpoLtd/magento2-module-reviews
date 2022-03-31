@@ -238,6 +238,7 @@ class Reviews extends Template
                 break;
 
             case 'all':
+            default:
                 $dateStart->modify('-1000 years');
                 break;
         }
