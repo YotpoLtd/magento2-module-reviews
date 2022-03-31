@@ -205,17 +205,15 @@ class Reviews extends Template
 
         switch ($range) {
             case '24h':
-                $dateEnd = new \DateTime();
-                $dateEnd->modify('+1 hour');
-                $dateStart = clone $dateEnd;
-                $dateStart->modify('-1 day');
+                $dateStart->modify('-24 hours');
                 break;
+
             case '1d':
                 $dateStart->modify('-1 days');
                 break;
 
             case '7d':
-                $dateStart->modify('-6 days');
+                $dateStart->modify('-7 days');
                 break;
 
             case '30d':
@@ -223,25 +221,15 @@ class Reviews extends Template
                 break;
 
             case '1m':
-                $dateStart->setDate(
-                    (int)$dateStart->format('Y'),
-                    (int)$dateStart->format('m'),
-                    $this->yotpoConfig->getConfig('reports/dashboard/mtd_start')
-                );
+                $dateStart->modify('-1 month');
                 break;
 
             case '1y':
+                $dateStart->modify('-1 year');
+                break;
+
             case '2y':
-                $startMonthDay = explode(
-                    ',',
-                    $this->yotpoConfig->getConfig('reports/dashboard/ytd_start')
-                );
-                $startMonth = isset($startMonthDay[0]) ? (int)$startMonthDay[0] : 1;
-                $startDay = isset($startMonthDay[1]) ? (int)$startMonthDay[1] : 1;
-                $dateStart->setDate((int)$dateStart->format('Y'), $startMonth, $startDay);
-                if ($range == '2y') {
-                    $dateStart->modify('-1 year');
-                }
+                $dateStart->modify('-2 years');
                 break;
 
             case 'custom':
