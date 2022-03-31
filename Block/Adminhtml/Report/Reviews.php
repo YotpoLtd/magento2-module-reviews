@@ -230,11 +230,6 @@ class Reviews extends Template
                 );
                 break;
 
-            case 'custom':
-                $dateStart = $customStart ? $customStart : $dateEnd;
-                $dateEnd = $customEnd ? $customEnd : $dateEnd;
-                break;
-
             case '1y':
             case '2y':
                 $startMonthDay = explode(
@@ -247,6 +242,11 @@ class Reviews extends Template
                 if ($range == '2y') {
                     $dateStart->modify('-1 year');
                 }
+                break;
+
+            case 'custom':
+                $dateStart = $customStart ? $customStart : $dateEnd;
+                $dateEnd = $customEnd ? $customEnd : $dateEnd;
                 break;
 
             case 'all':
