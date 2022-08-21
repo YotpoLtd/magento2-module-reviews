@@ -95,34 +95,6 @@ class Config extends YotpoCoreConfig
     }
 
     /**
-     * Get API KEY of the store
-     *
-     * @param int|null $scopeId
-     * @param string $scope
-     * @return string|mixed
-     * @throws LocalizedException
-     * @throws NoSuchEntityException
-     */
-    public function getAppKey(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE)
-    {
-        return $this->getConfig('app_key', $scopeId, $scope);
-    }
-
-    /**
-     * Get API Secret key of the store
-     *
-     * @param int|null $scopeId
-     * @param string $scope
-     * @return string|null
-     * @throws LocalizedException
-     * @throws NoSuchEntityException
-     */
-    public function getSecret(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE)
-    {
-        return (($secret = $this->getConfig('secret', $scopeId, $scope))) ? $this->encryptor->decrypt($secret) : null;
-    }
-
-    /**
      * Check if review form is enabled
      *
      * @param int|null $scopeId
@@ -190,20 +162,6 @@ class Config extends YotpoCoreConfig
     public function isMdrEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE)
     {
         return (bool)$this->getConfig('mdr_enabled', $scopeId, $scope);
-    }
-
-    /**
-     * Find if APP Key and Secret is setup correctly
-     *
-     * @param int|null $scopeId
-     * @param string $scope
-     * @return boolean
-     * @throws LocalizedException
-     * @throws NoSuchEntityException
-     */
-    public function isAppKeyAndSecretSet(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
-    {
-        return $this->getAppKey($scopeId, $scope) && $this->getSecret($scopeId, $scope);
     }
 
     /**
@@ -275,22 +233,6 @@ class Config extends YotpoCoreConfig
             }
         }
         return array_values($storeIds);
-    }
-
-    /**
-     * Reset store credentials
-     *
-     * @param int|null $storeId
-     * @param string|null  $scope
-     * @return $this
-     * @throws NoSuchEntityException
-     */
-    public function resetStoreCredentials($storeId = null, $scope = ScopeInterface::SCOPE_STORES)
-    {
-        $this->deleteConfig('yotpo_active', $scope, $storeId);
-        $this->deleteConfig('app_key', $scope, $storeId);
-        $this->deleteConfig('secret', $scope, $storeId);
-        return $this;
     }
 
     /**
