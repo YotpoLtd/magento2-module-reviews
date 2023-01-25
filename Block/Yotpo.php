@@ -179,6 +179,16 @@ class Yotpo extends Template
     /**
      * Check if widget is ready to render
      *
+     * @return string
+     */
+    public function getCurrentCurrency()
+    {
+        return $this->yotpoConfig->getCurrentCurrency();
+    }
+
+    /**
+     * Check if widget is ready to render
+     *
      * @return bool
      * @throws LocalizedException
      * @throws NoSuchEntityException

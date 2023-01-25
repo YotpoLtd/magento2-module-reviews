@@ -18,7 +18,7 @@ $escaper = $escaper ?? $block;
          data-url="<?= $escaper->escapeHtmlAttr($block->getProductUrl()) ?>"
          data-image-url="<?= $escaper->escapeHtmlAttr($block->getProductImageUrl()) ?>"
          data-price="<?= $escaper->escapeHtmlAttr($block->getProductFinalPrice()) ?>"
-         data-currency="<?= $escaper->escapeHtmlAttr($block->getCurrentCurrencyCode()) ?>">
+         data-currency="<?= $escaper->escapeHtmlAttr($block->getCurrentCurrency()) ?>">
      </div>
 <?php endif; ?>
 <!--/ Yotpo - Widget Div -->
