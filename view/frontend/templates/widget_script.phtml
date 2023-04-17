@@ -19,8 +19,12 @@ $escaper = $escaper ?? $block;
 </script>
 <!--/ Yotpo - Add body class -->
 <!-- Yotpo - Widget Script -->
-<script>
-    (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="<?= $escaper->escapeUrl($block->getYotpoWidgetUrl()) ?>";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
-</script>
+<?php if ($block->isV3ReviewsWidget() || $block->isV3StarRatingWidget()): ?>
+    <script type="text/javascript" src="https://cdn-widgetsrepository.yotpo.com/v1/loader/<?= $block->getAppKey() ?>" async></script>
+<?php else: ?>
+    <script>
+        (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="<?= $block->getYotpoWidgetUrl() ?>";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+    </script>
+<?php endif; ?>
 <!--/ Yotpo - Widget Script -->
 <?php // phpcs:enable

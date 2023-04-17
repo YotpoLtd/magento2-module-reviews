@@ -248,4 +248,40 @@ class Yotpo extends Template
     {
         return $this->yotpoConfig->getYotpoWidgetUrl();
     }
+
+    public function getReviewsInstanceId()
+    {
+        return '199262';
+    }
+
+    public function getQuestionsAndAnswersInstanceId()
+    {
+        return '216325';
+    }
+
+    public function getStarRatingInstanceId()
+    {
+        return '200995';
+    }
+
+    public function isV3ReviewsWidget()
+    {
+        $instanceId = $this->getReviewsInstanceId();
+
+        return strlen($instanceId) > 0 && $this->yotpoConfig->isV3Enabled();
+    }
+
+    public function isV3QuestionsAndAnswersWidget()
+    {
+        $instanceId = $this->getQuestionsAndAnswersInstanceId();
+
+        return strlen($instanceId) > 0 && $this->yotpoConfig->isV3Enabled();
+    }
+
+    public function isV3StarRatingWidget()
+    {
+        $instanceId = $this->getStarRatingInstanceId();
+
+        return strlen($instanceId) > 0 && $this->yotpoConfig->isV3Enabled();
+    }
 }

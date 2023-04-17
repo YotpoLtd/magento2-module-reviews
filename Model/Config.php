@@ -31,7 +31,8 @@ class Config extends YotpoCoreConfig
         'category_bottomline_enabled' => ['path' => 'yotpo/settings/category_bottomline_enabled'],
         'bottomline_enabled' => ['path' => 'yotpo/settings/bottomline_enabled'],
         'qna_enabled' => ['path' => 'yotpo/settings/qna_enabled'],
-        'mdr_enabled' => ['path' => 'yotpo/settings/mdr_enabled']
+        'mdr_enabled' => ['path' => 'yotpo/settings/mdr_enabled'],
+        'v3_enabled' => ['path' => 'yotpo/settings/v3_enabled']
     ];
 
     /**
@@ -162,6 +163,20 @@ class Config extends YotpoCoreConfig
     public function isMdrEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE)
     {
         return (bool)$this->getConfig('mdr_enabled', $scopeId, $scope);
+    }
+
+    /**
+     * Find whether Magento default review form is to display or not
+     *
+     * @param int|null $scopeId
+     * @param string $scope
+     * @return boolean
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    public function isV3Enabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE)
+    {
+        return (bool)$this->getConfig('v3_enabled', $scopeId, $scope);
     }
 
     /**
