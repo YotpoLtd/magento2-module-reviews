@@ -24,12 +24,8 @@ $escaper = $escaper ?? $block;
     </div>
 <?php elseif ($block->isRenderBottomlineQna()): ?>
     <div class="yotpo QABottomLine"
-        data-product-id="<?= $escaper->escapeHtmlAttr($block->getProductId()) ?>"
-        data-url="<?= $escaper->escapeHtmlAttr($block->getProductUrl()) ?>"
-        data-name="<?= $escaper->escapeHtmlAttr($block->getProductName()) ?>"
-        data-description="<?= $escaper->escapeHtmlAttr($block->getProductDescription()) ?>"
-        data-image-url="<?= $escaper->escapeHtmlAttr($block->getProductImageUrl()) ?>"
-        data-mode="questions">
+        data-appkey="<?= $escaper->escapeHtmlAttr($block->getAppKey()) ?>"
+        data-product-id="<?= $escaper->escapeHtmlAttr($block->getProductId()) ?>">
      </div>
 <?php endif; ?>
 <!--/ Yotpo - Q&A -->

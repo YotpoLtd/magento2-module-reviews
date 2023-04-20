@@ -1,0 +1,60 @@
+<?php
+/* @var $block SyncWidgetV3InstanceIdsButton */
+
+use Magento\Framework\Escaper;
+use Yotpo\Reviews\Block\Adminhtml\System\Config\SyncWidgetV3InstanceIdsButton;
+
+/* @var Escaper $escaper*/
+$escaper = $escaper ?? $block;
+?>
+
+<script>
+    require([
+        'jquery',
+        'prototype',
+        'mage/translate'
+    ], function($){
+        $syncWidgetV3InstanceIdsSuccessMsgDiv = $('#sync_widget_v3_instance_ids_message_success');
+        $syncWidgetV3InstanceIdsErrorMsgDiv = $('#sync_widget_v3_instance_ids_message_error');
+        var currentStore = <?= $escaper->escapeHtml($block->getStoreScope()) ?>;
+        var currentWebsite = <?= $escaper->escapeHtml($block->getWebsiteScope()) ?>;
+        $syncWidgetV3InstanceIdsSuccessMsgDiv.hide();
+        $syncWidgetV3InstanceIdsErrorMsgDiv.hide();
+        $('#yotpo_sync_widget_v3_instance_ids_btn').click(function () {
+            $('.message.message-success').hide();
+            $('.message.message-error').hide();
+            new Ajax.Request('<?= $escaper->escapeHtml($block->getAjaxUrl()) ?>', {
+                asynchronous:   true,
+                showLoader: true,
+                parameters:{
+                    store: currentStore,
+                    website: currentWebsite
+                },
+                onSuccess: function(response) {
+                    var respStatus = JSON.parse(response.responseText);
+                    var status = respStatus.status;
+                    var errorText = [];
+                    if (status.error.length) {
+                        var errorText = status.error.join('<br/>');
+                        $syncWidgetV3InstanceIdsErrorMsgDiv.html(errorText);
+                        $syncWidgetV3InstanceIdsErrorMsgDiv.show();
+                    }
+                    if (status.success.length) {
+                        var successText = status.success.join('<br/>');
+                        $syncWidgetV3InstanceIdsSuccessMsgDiv.html(successText);
+                        $syncWidgetV3InstanceIdsSuccessMsgDiv.show();
+                    }
+                },
+                onError: function() {
+                    $syncWidgetV3InstanceIdsErrorMsgDiv.show();
+                    $syncWidgetV3InstanceIdsErrorMsgDiv.text($.mage.__('Something went wrong. Please try again'));
+                },
+            });
+        });
+
+    });
+</script>
+
+<?= $block->getButtonHtml() ?>
+<div id="sync_widget_v3_instance_ids_message_success" class="message message-success" style="display: none;"></div>
+<div id="sync_widget_v3_instance_ids_message_error" class="message message-error" style="display: none;"></div>

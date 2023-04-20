@@ -5,6 +5,7 @@ use Magento\Catalog\Helper\Image as CatalogImageHelper;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Registry;
+use Magento\Framework\Serialize\Serializer\Serialize;
 use Magento\Framework\View\Element\Template\Context;
 use Yotpo\Reviews\Model\Config as YotpoConfig;
 use Magento\Framework\View\Element\Template;
@@ -251,37 +252,37 @@ class Yotpo extends Template
 
     public function getReviewsInstanceId()
     {
-        return '199262';
+        return $this->yotpoConfig->getV3InstanceId('ReviewsMainWidget');
     }
 
     public function getQuestionsAndAnswersInstanceId()
     {
-        return '216325';
+        return $this->yotpoConfig->getV3InstanceId('QuestionsAndAnswers');
     }
 
     public function getStarRatingInstanceId()
     {
-        return '200995';
+        return $this->yotpoConfig->getV3InstanceId('ReviewsStarRatingsWidget');
     }
 
     public function isV3ReviewsWidget()
     {
         $instanceId = $this->getReviewsInstanceId();
 
-        return strlen($instanceId) > 0 && $this->yotpoConfig->isV3Enabled();
+        return $instanceId !== false && $this->yotpoConfig->isV3Enabled();
     }
 
     public function isV3QuestionsAndAnswersWidget()
     {
         $instanceId = $this->getQuestionsAndAnswersInstanceId();
 
-        return strlen($instanceId) > 0 && $this->yotpoConfig->isV3Enabled();
+        return $instanceId !== false && $this->yotpoConfig->isV3Enabled();
     }
 
     public function isV3StarRatingWidget()
     {
         $instanceId = $this->getStarRatingInstanceId();
 
-        return strlen($instanceId) > 0 && $this->yotpoConfig->isV3Enabled();
+        return $instanceId !== false && $this->yotpoConfig->isV3Enabled();
     }
 }

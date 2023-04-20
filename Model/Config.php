@@ -32,7 +32,9 @@ class Config extends YotpoCoreConfig
         'bottomline_enabled' => ['path' => 'yotpo/settings/bottomline_enabled'],
         'qna_enabled' => ['path' => 'yotpo/settings/qna_enabled'],
         'mdr_enabled' => ['path' => 'yotpo/settings/mdr_enabled'],
-        'v3_enabled' => ['path' => 'yotpo/settings/v3_enabled']
+        'v3_enabled' => ['path' => 'yotpo/settings/v3_enabled'],
+        'sync_widget_v3_instance_ids_data' => ['path' => 'yotpo/settings/sync_widget_v3_instance_ids_data'],
+        'widget_v3_instance_ids_last_sync_time' => ['path' => 'yotpo/settings/widget_v3_instance_ids_last_sync_time'],
     ];
 
     /**
@@ -45,7 +47,8 @@ class Config extends YotpoCoreConfig
      */
     protected $reviewsEndPoints = [
         'metrics'  => 'apps/{store_id}/account_usages/metrics',
-        'product_bottomline'  => 'products/{store_id}/{product_id}/bottomline'
+        'product_bottomline'  => 'products/{store_id}/{product_id}/bottomline',
+        'api_v2_widgets' => 'api/v2/widgets?app_key={store_id}'
     ];
 
     /**
@@ -166,7 +169,7 @@ class Config extends YotpoCoreConfig
     }
 
     /**
-     * Find whether Magento default review form is to display or not
+     * Find whether widgets V3 are enabled
      *
      * @param int|null $scopeId
      * @param string $scope
@@ -265,5 +268,27 @@ class Config extends YotpoCoreConfig
             return false;
         }
         return true;
+    }
+
+    /**
+     * @param string $widgetTypeName
+     * @return string|null
+     */
+    public function getV3InstanceId($widgetTypeName)
+    {
+        $syncWidgetV3InstanceIdsData = $this->getConfig('sync_widget_v3_instance_ids_data');
+        if (!$syncWidgetV3InstanceIdsData) {
+            return false;
+        }
+
+        $v3InstaceIds = json_decode($syncWidgetV3InstanceIdsData, true);
+
+        if (is_array($v3InstaceIds) && array_key_exists($widgetTypeName, $v3InstaceIds)) {
+            $v3InstanceId = $v3InstaceIds[$widgetTypeName];
+
+            return strlen($v3InstanceId) > 0 ? $v3InstanceId : false;
+        }
+
+        return false;
     }
 }

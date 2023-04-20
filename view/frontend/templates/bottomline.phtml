@@ -25,10 +25,8 @@ $escaper = $escaper ?? $block;
 <?php elseif ($block->isRenderBottomline()): ?>
     <div 
         class="yotpo bottomLine bottomline-position"
-        data-domain="todo_check"
         data-product-id="<?= $escaper->escapeHtmlAttr($block->getProductId()) ?>"
-        data-yotpo-cart-product-id="todo_check"
-        data-yotpo-section-id="todo_check">
+        data-url="<?= $escaper->escapeUrl($block->getProductUrl()) ?>">
      </div>
 <?php endif; ?>
 <!--/ Yotpo - BottomLine -->
