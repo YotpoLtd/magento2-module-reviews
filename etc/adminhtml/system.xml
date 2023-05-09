@@ -47,7 +47,7 @@
                     <field id="v3_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
                            showInWebsite="1" showInStore="1" canRestore="1">
                         <label>Enable V3 Widgets</label>
-                        <config_path>yotpo/settings/v3_enabled</config_path>
+                        <config_path>yotpo/reviews/v3_enabled</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
                     <field id="sync_widget_v3_instance_ids" translate="label comment" sortOrder="320" type="label" showInDefault="1" showInWebsite="1" showInStore="1">
