@@ -32,9 +32,9 @@ class Config extends YotpoCoreConfig
         'bottomline_enabled' => ['path' => 'yotpo/settings/bottomline_enabled'],
         'qna_enabled' => ['path' => 'yotpo/settings/qna_enabled'],
         'mdr_enabled' => ['path' => 'yotpo/settings/mdr_enabled'],
-        'v3_enabled' => ['path' => 'yotpo/settings/v3_enabled'],
-        'sync_widget_v3_instance_ids_data' => ['path' => 'yotpo/settings/sync_widget_v3_instance_ids_data'],
-        'widget_v3_instance_ids_last_sync_time' => ['path' => 'yotpo/settings/widget_v3_instance_ids_last_sync_time'],
+        'v3_enabled' => ['path' => 'yotpo/reviews/v3_enabled'],
+        'sync_widget_v3_instance_ids_data' => ['path' => 'yotpo/reviews/sync_widget_v3_instance_ids_data'],
+        'widget_v3_instance_ids_last_sync_time' => ['path' => 'yotpo/reviews/widget_v3_instance_ids_last_sync_time'],
     ];
 
     /**
@@ -271,8 +271,10 @@ class Config extends YotpoCoreConfig
     }
 
     /**
+     * Returns widget v3 instance id from config by name
+     *
      * @param string $widgetTypeName
-     * @return string|null
+     * @return string|bool
      */
     public function getV3InstanceId($widgetTypeName)
     {
@@ -281,10 +283,10 @@ class Config extends YotpoCoreConfig
             return false;
         }
 
-        $v3InstaceIds = json_decode($syncWidgetV3InstanceIdsData, true);
+        $v3InstanceIds = json_decode($syncWidgetV3InstanceIdsData, true);
 
-        if (is_array($v3InstaceIds) && array_key_exists($widgetTypeName, $v3InstaceIds)) {
-            $v3InstanceId = $v3InstaceIds[$widgetTypeName];
+        if (is_array($v3InstanceIds) && array_key_exists($widgetTypeName, $v3InstanceIds)) {
+            $v3InstanceId = $v3InstanceIds[$widgetTypeName];
 
             return strlen($v3InstanceId) > 0 ? $v3InstanceId : false;
         }

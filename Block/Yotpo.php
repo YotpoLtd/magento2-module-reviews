@@ -250,39 +250,80 @@ class Yotpo extends Template
         return $this->yotpoConfig->getYotpoWidgetUrl();
     }
 
+    /**
+     * Returns V3 reviews main widget instance id
+     *
+     * @return string|bool
+     */
     public function getReviewsInstanceId()
     {
         return $this->yotpoConfig->getV3InstanceId('ReviewsMainWidget');
     }
 
+    /**
+     * Returns V3 questions and answers widget instance id
+     *
+     * @return string|bool
+     */
     public function getQuestionsAndAnswersInstanceId()
     {
         return $this->yotpoConfig->getV3InstanceId('QuestionsAndAnswers');
     }
 
+    /**
+     * Returns V3 star rating widget instance id
+     *
+     * @return string|bool
+     */
     public function getStarRatingInstanceId()
     {
         return $this->yotpoConfig->getV3InstanceId('ReviewsStarRatingsWidget');
     }
 
+    /**
+     * Checks if it should display V3 reviews main widget
+     *
+     * @return bool
+     */
     public function isV3ReviewsWidget()
     {
         $instanceId = $this->getReviewsInstanceId();
 
-        return $instanceId !== false && $this->yotpoConfig->isV3Enabled();
+        return $this->isV3Widget($instanceId);
     }
 
+    /**
+     * Checks if it should display V3 questions and answers widget
+     *
+     * @return bool
+     */
     public function isV3QuestionsAndAnswersWidget()
     {
         $instanceId = $this->getQuestionsAndAnswersInstanceId();
 
-        return $instanceId !== false && $this->yotpoConfig->isV3Enabled();
+        return $this->isV3Widget($instanceId);
     }
 
+    /**
+     * Checks if it should display V3 star rating widget
+     *
+     * @return bool
+     */
     public function isV3StarRatingWidget()
     {
         $instanceId = $this->getStarRatingInstanceId();
 
+        return $this->isV3Widget($instanceId);
+    }
+
+    /**
+     * Checks if it should display V3 widget with specified instance id
+     *
+     * @param string|bool $instanceId
+     * @return bool
+     */
+    public function isV3Widget($instanceId)
+    {
         return $instanceId !== false && $this->yotpoConfig->isV3Enabled();
     }
 }
