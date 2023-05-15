@@ -63,7 +63,7 @@ class SyncWidgetV3InstanceIdsButton extends Field
             \Magento\Backend\Block\Widget\Button::class
         )->setData([
                 'id'    => 'yotpo_sync_widget_v3_instance_ids_btn',
-                'label' => __('Sync Widget V3 instances'),
+                'label' => __('Sync widgets to v3'),
             ]);
 
         return $button->toHtml();

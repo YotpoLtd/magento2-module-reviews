@@ -123,7 +123,7 @@ class Processor extends AbstractJobs
             $this->addMessage(
                 'success',
                 __(
-                    'Widget V3 instances are synced successfully for Magento Store ID: %1, Name: %2. <br/><br/>Please purge cache.',
+                    'Widget synced for Adobe Commerce Store ID: %1, Name: %2. <br/><br/>Please clear your cache to finish.',
                     $storeId,
                     $storeCode
                 )
