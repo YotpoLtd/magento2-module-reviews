@@ -287,8 +287,11 @@ class Config extends YotpoCoreConfig
 
         if (is_array($v3InstanceIds) && array_key_exists($widgetTypeName, $v3InstanceIds)) {
             $v3InstanceId = $v3InstanceIds[$widgetTypeName];
+            if (strlen($v3InstanceId) == 0) {
+                return false;
+            }
 
-            return strlen($v3InstanceId) > 0 ? $v3InstanceId : false;
+            return $v3InstanceId;
         }
 
         return false;

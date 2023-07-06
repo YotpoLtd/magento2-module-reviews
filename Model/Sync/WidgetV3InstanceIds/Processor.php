@@ -105,7 +105,7 @@ class Processor extends AbstractJobs
         $storeId = $this->yotpoConfig->getStoreId();
         $currentTime = date('Y-m-d H:i:s');
         //call to API
-        $response = $this->syncWidgetV3InstanceIds();
+        $response = $this->getWidgetV3InstanceIds();
         $storeCode = $this->yotpoConfig->getStoreName($storeId);
         $this->updateLastSyncDate($currentTime);
         if ($response->getData('is_success')) {
@@ -146,7 +146,7 @@ class Processor extends AbstractJobs
      * @return DataObject
      * @throws NoSuchEntityException
      */
-    public function syncWidgetV3InstanceIds()
+    public function getWidgetV3InstanceIds()
     {
         $url = $this->yotpoConfig->getEndpoint('api_v2_widgets');
         return $this->yotpoSyncMain->sync($this->yotpoConfig::METHOD_GET, $url, ['utoken' => true]);
