@@ -31,7 +31,10 @@ class Config extends YotpoCoreConfig
         'category_bottomline_enabled' => ['path' => 'yotpo/settings/category_bottomline_enabled'],
         'bottomline_enabled' => ['path' => 'yotpo/settings/bottomline_enabled'],
         'qna_enabled' => ['path' => 'yotpo/settings/qna_enabled'],
-        'mdr_enabled' => ['path' => 'yotpo/settings/mdr_enabled']
+        'mdr_enabled' => ['path' => 'yotpo/settings/mdr_enabled'],
+        'v3_enabled' => ['path' => 'yotpo/reviews/v3_enabled'],
+        'sync_widget_v3_instance_ids_data' => ['path' => 'yotpo/reviews/sync_widget_v3_instance_ids_data'],
+        'widget_v3_instance_ids_last_sync_time' => ['path' => 'yotpo/reviews/widget_v3_instance_ids_last_sync_time'],
     ];
 
     /**
@@ -44,7 +47,8 @@ class Config extends YotpoCoreConfig
      */
     protected $reviewsEndPoints = [
         'metrics'  => 'apps/{store_id}/account_usages/metrics',
-        'product_bottomline'  => 'products/{store_id}/{product_id}/bottomline'
+        'product_bottomline'  => 'products/{store_id}/{product_id}/bottomline',
+        'api_v2_widgets' => 'api/v2/widgets?app_key={store_id}'
     ];
 
     /**
@@ -165,6 +169,20 @@ class Config extends YotpoCoreConfig
     }
 
     /**
+     * Find whether widgets V3 are enabled
+     *
+     * @param int|null $scopeId
+     * @param string $scope
+     * @return boolean
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    public function isV3Enabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE)
+    {
+        return (bool)$this->getConfig('v3_enabled', $scopeId, $scope);
+    }
+
+    /**
      * Find if Yotpo is activated
      *
      * @param int|null $scopeId
@@ -250,5 +268,32 @@ class Config extends YotpoCoreConfig
             return false;
         }
         return true;
+    }
+
+    /**
+     * Returns widget v3 instance id from config by name
+     *
+     * @param string $widgetTypeName
+     * @return string|bool
+     */
+    public function getV3InstanceId($widgetTypeName)
+    {
+        $syncWidgetV3InstanceIdsData = $this->getConfig('sync_widget_v3_instance_ids_data');
+        if (!$syncWidgetV3InstanceIdsData) {
+            return false;
+        }
+
+        $v3InstanceIds = json_decode($syncWidgetV3InstanceIdsData, true);
+
+        if (is_array($v3InstanceIds) && array_key_exists($widgetTypeName, $v3InstanceIds)) {
+            $v3InstanceId = $v3InstanceIds[$widgetTypeName];
+            if (strlen($v3InstanceId) == 0) {
+                return false;
+            }
+
+            return $v3InstanceId;
+        }
+
+        return false;
     }
 }

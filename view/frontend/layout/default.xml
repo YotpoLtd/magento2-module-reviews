@@ -7,6 +7,9 @@
         <referenceBlock name="content.aside">
             <block class="Yotpo\Reviews\Block\Yotpo" name="yotpo_widget_div" template="Yotpo_Reviews::widget_div.phtml" ifconfig="yotpo_core/settings/active"/>
         </referenceBlock>
+        <referenceBlock name="content.aside">
+            <block class="Yotpo\Reviews\Block\Yotpo" name="yotpo_qna" template="Yotpo_Reviews::questions_and_answers.phtml" ifconfig="yotpo_core/settings/active"/>
+        </referenceBlock>
         <referenceContainer name="product.info.main">
             <block class="Yotpo\Reviews\Block\Yotpo" name="yotpo_bottomline" template="Yotpo_Reviews::bottomline.phtml" before="product.info.addto" ifconfig="yotpo_core/settings/active"/>
         </referenceContainer>

@@ -22,13 +22,13 @@
                     </field>
                     <field id="category_bottomline_enabled" translate="label" type="select" sortOrder="110"
                            showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                        <label>Show star rating on category pages</label>
+                        <label>Show Star Rating on category pages</label>
                         <config_path>yotpo/settings/category_bottomline_enabled</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
                     <field id="bottomline_enabled" translate="label" type="select" sortOrder="120" showInDefault="1"
                            showInWebsite="1" showInStore="1" canRestore="1">
-                        <label>Show star rating on product pages</label>
+                        <label>Show Star Rating on product pages</label>
                         <config_path>yotpo/settings/bottomline_enabled</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
@@ -40,9 +40,21 @@
                     </field>
                     <field id="mdr_enabled" translate="label" type="select" sortOrder="140" showInDefault="1"
                            showInWebsite="1" showInStore="1" canRestore="1">
-                        <label>Hide Magento Reviews</label>
+                        <label>Hide Adobe Commerce Reviews</label>
                         <config_path>yotpo/settings/mdr_enabled</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="v3_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable V3 Widgets</label>
+                        <config_path>yotpo/reviews/v3_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="sync_widget_v3_instance_ids" translate="label comment" sortOrder="320" type="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <frontend_model>Yotpo\Reviews\Block\Adminhtml\System\Config\SyncWidgetV3InstanceIdsButton</frontend_model>
+                        <depends>
+                            <field id="v3_enabled">1</field>
+                        </depends>
                     </field>
                 </group>
             </group>
