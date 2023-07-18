@@ -296,4 +296,11 @@ class Config extends YotpoCoreConfig
 
         return false;
     }
+
+    public function isV3StarRatingWidget()
+    {
+        $instanceId = $this->getV3InstanceId('ReviewsStarRatingsWidget');
+
+        return $instanceId !== false && $this->isV3Enabled();
+    }
 }
