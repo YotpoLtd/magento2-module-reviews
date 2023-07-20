@@ -23,6 +23,6 @@ class RichSnippet extends \Magento\Framework\Model\AbstractModel
             return false;
         }
 
-        return $expirationTime > time();
+        return strtotime($expirationTime) > time();
     }
 }
