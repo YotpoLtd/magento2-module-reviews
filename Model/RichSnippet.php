@@ -18,6 +18,11 @@ class RichSnippet extends \Magento\Framework\Model\AbstractModel
      */
     public function isValid()
     {
-        return (strtotime($this->getExpirationTime()) > time());
+        $expirationTime = $this->getExpirationTime();
+        if (is_null($expirationTime)) {
+            return false;
+        }
+
+        return $expirationTime > time();
     }
 }
