@@ -11,6 +11,7 @@ $escaper = $escaper ?? $block;
 <?php if (!($block->isEnabled() && ($block->isRenderBottomline() || $block->isRenderBottomlineQna()))) {
     return;
 } ?>
+
 <!-- Yotpo - BottomLine -->
 <?php if ($block->isV3StarRatingWidget()): ?>
     <div
@@ -22,11 +23,20 @@ $escaper = $escaper ?? $block;
         data-yotpo-image-url="<?= $escaper->escapeHtmlAttr($block->getProductImageUrl()) ?>"
         data-yotpo-description="<?= $escaper->escapeHtmlAttr($block->getProductDescription()) ?>">
     </div>
-<?php elseif ($block->isRenderBottomline()): ?>
-    <div 
-        class="yotpo bottomLine bottomline-position"
-        data-product-id="<?= $escaper->escapeHtmlAttr($block->getProductId()) ?>"
-        data-url="<?= $escaper->escapeUrl($block->getProductUrl()) ?>">
-     </div>
+<?php else: ?>
+    <?php if ($block->isRenderBottomline()): ?>
+        <div
+            class="yotpo bottomLine bottomline-position"
+            data-product-id="<?= $escaper->escapeHtmlAttr($block->getProductId()) ?>"
+            data-url="<?= $escaper->escapeUrl($block->getProductUrl()) ?>">
+        </div>
+    <?php endif; ?>
+    <?php if ($block->isRenderBottomlineQna()): ?>
+        <div
+            class="yotpo QABottomLine"
+            data-appkey="<?= $escaper->escapeHtmlAttr($block->getAppKey()) ?>"
+            data-product-id="<?= $escaper->escapeHtmlAttr($block->getProductId()) ?>">
+        </div>
+    <?php endif; ?>
 <?php endif; ?>
 <!--/ Yotpo - BottomLine -->
