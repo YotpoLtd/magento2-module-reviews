@@ -111,6 +111,21 @@ class Processor extends AbstractJobs
         if ($response->getData('is_success')) {
             $responseData = $response->getData('response');
             $widgetV3InstanceIds = [];
+
+            if (empty($responseData['widget_instances'])) {
+                $this->yotpoConfig->deleteConfig('sync_widget_v3_instance_ids_data');
+                $this->addMessage(
+                    'error',
+                    __(
+                        'Widget could not be synced for Adobe Commerce Store ID: %1, Name: %2. <br/><br/>You haven’t customized your widgets yet.<br/><br/>Go to <a href="https://reviews.yotpo.com/#/display-reviews/on-site-widgets" target="_blank">Yotpo Reviews</a>',
+                        $storeId,
+                        $storeCode
+                    )
+
+                );
+                return;
+            }
+
             foreach ($responseData['widget_instances'] as $widgetInstance) {
                 if (!empty($widgetInstance['widget_type_name']) && !empty($widgetInstance['widget_instance_id'])) {
                     $widgetV3InstanceIds[$widgetInstance['widget_type_name']] = $widgetInstance['widget_instance_id'];
