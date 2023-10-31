@@ -13,6 +13,15 @@ use Magento\Store\Model\StoreManagerInterface;
 use Yotpo\Core\Model\Config as YotpoCoreConfig;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Config\Model\ResourceModel\Config as ConfigResource;
+use Magento\Review\Block\Product\ReviewRenderer;
+
+enum StarRatingSectionId: string {
+    case PRODUCT = 'product';
+    case CATEGORY = 'collection';
+    case HOME = 'index';
+    case CART = 'cart';
+    case PRODUCT_GRID = 'product-grid';
+}
 
 /**
  * Class Config - Get Reviews related config values
@@ -302,5 +311,17 @@ class Config extends YotpoCoreConfig
         $instanceId = $this->getV3InstanceId('ReviewsStarRatingsWidget');
 
         return $instanceId !== false && $this->isV3Enabled();
+    }
+
+    public static function getWidgetSectionId(string | null $sectionId): string {
+        switch ($sectionId) {
+            case ReviewRenderer::DEFAULT_VIEW:
+            case ReviewRenderer::FULL_VIEW:
+                return StarRatingSectionId::PRODUCT->value;
+            case ReviewRenderer::SHORT_VIEW:
+                return StarRatingSectionId::CATEGORY->value;
+            default:
+                return StarRatingSectionId::CATEGORY->value;
+        }
     }
 }

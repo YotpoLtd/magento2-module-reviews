@@ -4,7 +4,8 @@
  * @var Magento\Framework\Escaper $escaper
  */
 
-use Yotpo\Reviews\Block\Yotpo;
+use Magento\Review\Block\Product\ReviewRenderer;
+use Yotpo\Reviews\Model\Config as YotpoConfig;
 
 $escaper = $escaper ?? $block;
 ?>
@@ -21,8 +22,9 @@ $escaper = $escaper ?? $block;
         data-yotpo-name="<?= $escaper->escapeHtmlAttr($block->getProductName()) ?>"
         data-yotpo-url="<?= $escaper->escapeHtmlAttr($block->getProductUrl()) ?>"
         data-yotpo-image-url="<?= $escaper->escapeHtmlAttr($block->getProductImageUrl()) ?>"
-        data-yotpo-description="<?= $escaper->escapeHtmlAttr($block->getProductDescription()) ?>">
-    </div>
+        data-yotpo-description="<?= $escaper->escapeHtmlAttr($block->getProductDescription()) ?>"
+        data-yotpo-section-id="<?= $escaper->escapeHtmlAttr(YotpoConfig::getWidgetSectionId(ReviewRenderer::DEFAULT_VIEW)) ?>"
+    ></div>
 <?php else: ?>
     <?php if ($block->isRenderBottomline()): ?>
         <div
