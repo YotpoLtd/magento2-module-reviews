@@ -1,0 +1,20 @@
+<?php
+/**
+ * @var $block Yotpo
+ * @var Magento\Framework\Escaper $escaper
+ */
+
+$escaper = $escaper ?? $block;
+?>
+<?php if (!($block->isEnabled() && $block->isRenderCarousel())) {
+    return;
+} ?>
+<!-- Yotpo - Carousel Widget -->
+<?php if ($block->isV3CarouselWidget()): ?>
+    <div
+        class="yotpo-widget-instance"
+        data-yotpo-instance-id="<?= $block->getCarouselInstanceId() ?>"
+        data-yotpo-product-id="<?= $escaper->escapeHtmlAttr($block->getProductId()) ?>"
+    ></div>
+<?php endif; ?>
+<!--/ Yotpo - Carousel Widget -->

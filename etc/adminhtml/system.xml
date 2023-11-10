@@ -38,13 +38,19 @@
                         <config_path>yotpo/settings/qna_enabled</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
-                    <field id="mdr_enabled" translate="label" type="select" sortOrder="140" showInDefault="1"
+                    <field id="carousel_enabled" translate="label" type="select" sortOrder="140" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Reviews Carousel</label>
+                        <config_path>yotpo/settings/carousel_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="mdr_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
                            showInWebsite="1" showInStore="1" canRestore="1">
                         <label>Hide Adobe Commerce Reviews</label>
                         <config_path>yotpo/settings/mdr_enabled</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
-                    <field id="v3_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
+                    <field id="v3_enabled" translate="label" type="select" sortOrder="160" showInDefault="1"
                            showInWebsite="1" showInStore="1" canRestore="1">
                         <label>Enable V3 Widgets</label>
                         <config_path>yotpo/reviews/v3_enabled</config_path>

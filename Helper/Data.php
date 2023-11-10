@@ -71,4 +71,17 @@ class Data extends AbstractHelper
     {
         return $this->renderYotpoProductBlock('qna', $parentBlock, $product);
     }
+
+    /**
+     * Show Q&A in PDP
+     *
+     * @param AbstractBlock $parentBlock
+     * @param Product|null $product
+     * @return mixed
+     * @throws LocalizedException
+     */
+    public function showReviewsCarousel(AbstractBlock $parentBlock, Product $product = null)
+    {
+        return $this->renderYotpoProductBlock('reviews_carousel', $parentBlock, $product);
+    }
 }
