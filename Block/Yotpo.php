@@ -236,6 +236,18 @@ class Yotpo extends Template
     }
 
     /**
+     * Check if Carousel is ready to render
+     *
+     * @return bool
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    public function isRenderPromotedProducts()
+    {
+        return $this->hasProduct() && $this->yotpoConfig->isPromotedProductsEnabled();
+    }
+
+    /**
      * Escape tags from string
      *
      * @param string $str
@@ -303,6 +315,16 @@ class Yotpo extends Template
     }
 
     /**
+     * Returns V3 star rating widget instance id
+     *
+     * @return string|bool
+     */
+    public function getPromotedProductsInstanceId()
+    {
+        return $this->yotpoConfig->getV3InstanceId('PromotedProducts');
+    }
+
+    /**
      * Checks if it should display V3 reviews main widget
      *
      * @return bool
@@ -346,6 +368,18 @@ class Yotpo extends Template
     public function isV3CarouselWidget()
     {
         $instanceId = $this->getCarouselInstanceId();
+
+        return $this->isV3Widget($instanceId);
+    }
+
+    /**
+     * Checks if it should display V3 star rating widget
+     *
+     * @return bool
+     */
+    public function isV3PromotedProductsWidget()
+    {
+        $instanceId = $this->getPromotedProductsInstanceId();
 
         return $this->isV3Widget($instanceId);
     }

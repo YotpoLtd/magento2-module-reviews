@@ -41,6 +41,7 @@ class Config extends YotpoCoreConfig
         'bottomline_enabled' => ['path' => 'yotpo/settings/bottomline_enabled'],
         'qna_enabled' => ['path' => 'yotpo/settings/qna_enabled'],
         'carousel_enabled' => ['path' => 'yotpo/settings/carousel_enabled'],
+        'promoted_products_enabled' => ['path' => 'yotpo/settings/promoted_products_enabled'],
         'mdr_enabled' => ['path' => 'yotpo/settings/mdr_enabled'],
         'v3_enabled' => ['path' => 'yotpo/reviews/v3_enabled'],
         'sync_widget_v3_instance_ids_data' => ['path' => 'yotpo/reviews/sync_widget_v3_instance_ids_data'],
@@ -176,6 +177,20 @@ class Config extends YotpoCoreConfig
     public function isCarouselEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return (bool)$this->getConfig('carousel_enabled', $scopeId, $scope);
+    }
+
+    /**
+     * Check if BottomLine QnA enabled for PDP page
+     *
+     * @param int|null $scopeId
+     * @param string $scope
+     * @return boolean
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    public function isPromotedProductsEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    {
+        return (bool)$this->getConfig('promoted_products_enabled', $scopeId, $scope);
     }
 
     /**
