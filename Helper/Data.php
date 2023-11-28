@@ -73,7 +73,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Show Q&A in PDP
+     * Show Carousel in PDP
      *
      * @param AbstractBlock $parentBlock
      * @param Product|null $product
@@ -86,7 +86,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Show Q&A in PDP
+     * Show Promoted Products in PDP
      *
      * @param AbstractBlock $parentBlock
      * @param Product|null $product
@@ -96,5 +96,18 @@ class Data extends AbstractHelper
     public function showPromotedProducts(AbstractBlock $parentBlock, Product $product = null)
     {
         return $this->renderYotpoProductBlock('promoted_products', $parentBlock, $product);
+    }
+
+    /**
+     * Show SEO Page in PDP
+     *
+     * @param AbstractBlock $parentBlock
+     * @param Product|null $product
+     * @return mixed
+     * @throws LocalizedException
+     */
+    public function showSEOPage(AbstractBlock $parentBlock, Product $product = null)
+    {
+        return $this->renderYotpoProductBlock('seo_page', $parentBlock, $product);
     }
 }

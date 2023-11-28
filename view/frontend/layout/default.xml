@@ -16,6 +16,9 @@
         <referenceBlock name="content.aside">
             <block class="Yotpo\Reviews\Block\Yotpo" name="yotpo_promoted_products" template="Yotpo_Reviews::promoted_products.phtml" ifconfig="yotpo_core/settings/active"/>
         </referenceBlock>
+        <referenceBlock name="content.aside">
+            <block class="Yotpo\Reviews\Block\Yotpo" name="yotpo_seo_page" template="Yotpo_Reviews::seo_page.phtml" ifconfig="yotpo_core/settings/active"/>
+        </referenceBlock>
         <referenceContainer name="product.info.main">
             <block class="Yotpo\Reviews\Block\Yotpo" name="yotpo_bottomline" template="Yotpo_Reviews::bottomline.phtml" before="product.info.addto" ifconfig="yotpo_core/settings/active"/>
         </referenceContainer>
