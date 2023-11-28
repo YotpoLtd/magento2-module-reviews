@@ -260,6 +260,18 @@ class Yotpo extends Template
     }
 
     /**
+     * Check if Reviews Tab is ready to render
+     *
+     * @return bool
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    public function isRenderReviewsTab()
+    {
+        return $this->hasProduct() && $this->yotpoConfig->isReviewsTabEnabled();
+    }
+
+    /**
      * Escape tags from string
      *
      * @param string $str
@@ -347,6 +359,16 @@ class Yotpo extends Template
     }
 
     /**
+     * Returns V3 Reviews Tab widget instance id
+     *
+     * @return string|bool
+     */
+    public function getReviewsTabInstanceId()
+    {
+        return $this->yotpoConfig->getV3InstanceId('ReviewsTab');
+    }
+
+    /**
      * Checks if it should display V3 reviews main widget
      *
      * @return bool
@@ -414,6 +436,18 @@ class Yotpo extends Template
     public function isV3SEOPageWidget()
     {
         $instanceId = $this->getSEOPageInstanceId();
+
+        return $this->isV3Widget($instanceId);
+    }
+
+    /**
+     * Checks if it should display V3 Reviews Tab widget
+     *
+     * @return bool
+     */
+    public function isV3ReviewsTabWidget()
+    {
+        $instanceId = $this->getReviewsTabInstanceId();
 
         return $this->isV3Widget($instanceId);
     }

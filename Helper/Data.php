@@ -110,4 +110,17 @@ class Data extends AbstractHelper
     {
         return $this->renderYotpoProductBlock('seo_page', $parentBlock, $product);
     }
+
+    /**
+     * Show Reviews Tab in PDP
+     *
+     * @param AbstractBlock $parentBlock
+     * @param Product|null $product
+     * @return mixed
+     * @throws LocalizedException
+     */
+    public function showReviewsTab(AbstractBlock $parentBlock, Product $product = null)
+    {
+        return $this->renderYotpoProductBlock('reviews_tab', $parentBlock, $product);
+    }
 }
