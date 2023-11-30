@@ -99,19 +99,6 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Show SEO Page in PDP
-     *
-     * @param AbstractBlock $parentBlock
-     * @param Product|null $product
-     * @return mixed
-     * @throws LocalizedException
-     */
-    public function showSEOPage(AbstractBlock $parentBlock, Product $product = null)
-    {
-        return $this->renderYotpoProductBlock('seo_page', $parentBlock, $product);
-    }
-
-    /**
      * Show Reviews Tab in PDP
      *
      * @param AbstractBlock $parentBlock

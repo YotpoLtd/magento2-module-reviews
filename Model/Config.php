@@ -42,7 +42,6 @@ class Config extends YotpoCoreConfig
         'qna_enabled' => ['path' => 'yotpo/settings/qna_enabled'],
         'carousel_enabled' => ['path' => 'yotpo/settings/carousel_enabled'],
         'promoted_products_enabled' => ['path' => 'yotpo/settings/promoted_products_enabled'],
-        'seo_page_enabled' => ['path' => 'yotpo/settings/seo_page_enabled'],
         'reviews_tab_enabled' => ['path' => 'yotpo/settings/reviews_tab_enabled'],
         'mdr_enabled' => ['path' => 'yotpo/settings/mdr_enabled'],
         'v3_enabled' => ['path' => 'yotpo/reviews/v3_enabled'],
@@ -193,20 +192,6 @@ class Config extends YotpoCoreConfig
     public function isPromotedProductsEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return (bool)$this->getConfig('promoted_products_enabled', $scopeId, $scope);
-    }
-
-    /**
-     * Check if SEO Page enabled for PDP page
-     *
-     * @param int|null $scopeId
-     * @param string $scope
-     * @return boolean
-     * @throws LocalizedException
-     * @throws NoSuchEntityException
-     */
-    public function isSEOPageEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
-    {
-        return (bool)$this->getConfig('seo_page_enabled', $scopeId, $scope);
     }
 
     /**
