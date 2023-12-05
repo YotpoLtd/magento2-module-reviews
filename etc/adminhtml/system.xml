@@ -38,16 +38,40 @@
                         <config_path>yotpo/settings/qna_enabled</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
-                    <field id="carousel_enabled" translate="label" type="select" sortOrder="140" showInDefault="1"
+                    <field id="carousel_product_enabled" translate="label" type="select" sortOrder="140" showInDefault="1"
                            showInWebsite="1" showInStore="1" canRestore="1">
-                        <label>Enable Reviews Carousel</label>
-                        <config_path>yotpo/settings/carousel_enabled</config_path>
+                        <label>Enable Reviews Carousel on product pages</label>
+                        <config_path>yotpo/settings/carousel_product_enabled</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
-                    <field id="promoted_products_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
+                    <field id="carousel_category_enabled" translate="label" type="select" sortOrder="141" showInDefault="1"
                            showInWebsite="1" showInStore="1" canRestore="1">
-                        <label>Enable Promoted Products</label>
-                        <config_path>yotpo/settings/promoted_products_enabled</config_path>
+                        <label>Enable Reviews Carousel on category pages</label>
+                        <config_path>yotpo/settings/carousel_category_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="carousel_home_enabled" translate="label" type="select" sortOrder="141" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Reviews Carousel on home page</label>
+                        <config_path>yotpo/settings/carousel_home_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="promoted_products_product_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Promoted Products on product pages</label>
+                        <config_path>yotpo/settings/promoted_products_product_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="promoted_products_category_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Promoted Products on category pages</label>
+                        <config_path>yotpo/settings/promoted_products_category_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="promoted_products_home_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Promoted Products on home page</label>
+                        <config_path>yotpo/settings/promoted_products_home_enabled</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
                     <field id="reviews_tab_enabled" translate="label" type="select" sortOrder="160" showInDefault="1"

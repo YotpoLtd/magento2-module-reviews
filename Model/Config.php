@@ -40,8 +40,12 @@ class Config extends YotpoCoreConfig
         'category_bottomline_enabled' => ['path' => 'yotpo/settings/category_bottomline_enabled'],
         'bottomline_enabled' => ['path' => 'yotpo/settings/bottomline_enabled'],
         'qna_enabled' => ['path' => 'yotpo/settings/qna_enabled'],
-        'carousel_enabled' => ['path' => 'yotpo/settings/carousel_enabled'],
-        'promoted_products_enabled' => ['path' => 'yotpo/settings/promoted_products_enabled'],
+        'carousel_product_enabled' => ['path' => 'yotpo/settings/carousel_product_enabled'],
+        'carousel_category_enabled' => ['path' => 'yotpo/settings/carousel_category_enabled'],
+        'carousel_home_enabled' => ['path' => 'yotpo/settings/carousel_home_enabled'],
+        'promoted_products_product_enabled' => ['path' => 'yotpo/settings/promoted_products_product_enabled'],
+        'promoted_products_category_enabled' => ['path' => 'yotpo/settings/promoted_products_category_enabled'],
+        'promoted_products_home_enabled' => ['path' => 'yotpo/settings/promoted_products_home_enabled'],
         'reviews_tab_enabled' => ['path' => 'yotpo/settings/reviews_tab_enabled'],
         'mdr_enabled' => ['path' => 'yotpo/settings/mdr_enabled'],
         'v3_enabled' => ['path' => 'yotpo/reviews/v3_enabled'],
@@ -167,6 +171,34 @@ class Config extends YotpoCoreConfig
     }
 
     /**
+     * Check if Carousel enabled for category pages
+     *
+     * @param int|null $scopeId
+     * @param string $scope
+     * @return boolean
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    public function isCarouselOnCategoryPagesEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    {
+        return (bool)$this->getConfig('carousel_category_enabled', $scopeId, $scope);
+    }
+
+    /**
+     * Check if Carousel enabled for home pages
+     *
+     * @param int|null $scopeId
+     * @param string $scope
+     * @return boolean
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    public function isCarouselOnHomePagesEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    {
+        return (bool)$this->getConfig('carousel_home_enabled', $scopeId, $scope);
+    }
+
+    /**
      * Check if Carousel enabled for PDP page
      *
      * @param int|null $scopeId
@@ -175,9 +207,9 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isCarouselEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isCarouselOnProductPagesEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
-        return (bool)$this->getConfig('carousel_enabled', $scopeId, $scope);
+        return (bool)$this->getConfig('carousel_product_enabled', $scopeId, $scope);
     }
 
     /**
@@ -189,9 +221,37 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isPromotedProductsEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isPromotedProductsOnProductPageEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
-        return (bool)$this->getConfig('promoted_products_enabled', $scopeId, $scope);
+        return (bool)$this->getConfig('promoted_products_product_enabled', $scopeId, $scope);
+    }
+
+    /**
+     * Check if Promoted Products enabled for category pages
+     *
+     * @param int|null $scopeId
+     * @param string $scope
+     * @return boolean
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    public function isPromotedProductsOnCategoryPagesEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    {
+        return (bool)$this->getConfig('promoted_products_category_enabled', $scopeId, $scope);
+    }
+
+    /**
+     * Check if Promoted Products enabled for home page
+     *
+     * @param int|null $scopeId
+     * @param string $scope
+     * @return boolean
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    public function isPromotedProductsOnHomePageEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    {
+        return (bool)$this->getConfig('promoted_products_home_enabled', $scopeId, $scope);
     }
 
     /**

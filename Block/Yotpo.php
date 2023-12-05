@@ -10,6 +10,12 @@ use Magento\Framework\View\Element\Template\Context;
 use Yotpo\Reviews\Model\Config as YotpoConfig;
 use Magento\Framework\View\Element\Template;
 
+enum WidgetsLocations: string {
+    case HOME = 'cms_index_index';
+    case CATEGORY = 'catalog_category_view';
+    case OTHER = '';
+}
+
 /**
  * Class Yotpo - Block file for Yotpo Reviews Widget
  */
@@ -232,7 +238,45 @@ class Yotpo extends Template
      */
     public function isRenderCarousel()
     {
-        return $this->hasProduct() && $this->yotpoConfig->isCarouselEnabled();
+        return $this->isRenderCarouselOnProductPages()
+            || $this->isRenderCarouselOnCategoryPages()
+            || $this->isRenderCarouselOnHomePages();
+    }
+
+    /**
+     * Check if Carousel is ready to render on product pages
+     *
+     * @return bool
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    private function isRenderCarouselOnProductPages()
+    {
+        return $this->hasProduct() && $this->yotpoConfig->isCarouselOnProductPagesEnabled();
+    }
+
+    /**
+     * Check if Carousel is ready to render on category pages
+     *
+     * @return bool
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    private function isRenderCarouselOnCategoryPages()
+    {
+        return $this->isItCategoryPage() && $this->yotpoConfig->isCarouselOnCategoryPagesEnabled();
+    }
+
+    /**
+     * Check if Carousel is ready to render on home pages
+     *
+     * @return bool
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    private function isRenderCarouselOnHomePages()
+    {
+        return $this->isItHomePage() && $this->yotpoConfig->isCarouselOnHomePagesEnabled();
     }
 
     /**
@@ -244,7 +288,45 @@ class Yotpo extends Template
      */
     public function isRenderPromotedProducts()
     {
-        return $this->hasProduct() && $this->yotpoConfig->isPromotedProductsEnabled();
+        return $this->isRenderPromotedProductsOnProductPage()
+            || $this->isRenderPromotedProductsOnCategoryPages()
+            || $this->isRenderPromotedProductsOnHomePage();
+    }
+
+    /**
+     * Check if Promoted Products is ready to render on product pages
+     *
+     * @return bool
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    private function isRenderPromotedProductsOnProductPage()
+    {
+        return $this->hasProduct() && $this->yotpoConfig->isPromotedProductsOnProductPageEnabled();
+    }
+
+    /**
+     * Check if Promoted Products is ready to render on category pages
+     *
+     * @return bool
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    private function isRenderPromotedProductsOnCategoryPages()
+    {
+        return $this->isItCategoryPage() && $this->yotpoConfig->isPromotedProductsOnCategoryPagesEnabled();
+    }
+
+    /**
+     * Check if Promoted Products is ready to render on home page
+     *
+     * @return bool
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
+    private function isRenderPromotedProductsOnHomePage()
+    {
+        return $this->isItHomePage() && $this->yotpoConfig->isPromotedProductsOnHomePageEnabled();
     }
 
     /**
@@ -428,4 +510,31 @@ class Yotpo extends Template
     {
         return $instanceId !== false && $this->yotpoConfig->isV3Enabled();
     }
+
+    /**
+     * Check if it is Home Page
+     *
+     * @return boolean
+     */
+    public function isItHomePage(): bool
+    {
+        return $this->getWidgetLocation() === WidgetsLocations::HOME->value;
+    }
+
+    /**
+     * Check if it is Category Page
+     *
+     * @return boolean
+     */
+    public function isItCategoryPage(): bool
+    {
+        return $this->getWidgetLocation() === WidgetsLocations::CATEGORY->value;
+    }
+
+    private function getWidgetLocation(): string {
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $request = $objectManager->get('Magento\Framework\App\Request\Http');
+        return $request->getFullActionName();
+    }
+
 }

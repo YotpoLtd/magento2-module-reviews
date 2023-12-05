@@ -80,9 +80,35 @@ class Data extends AbstractHelper
      * @return mixed
      * @throws LocalizedException
      */
-    public function showReviewsCarousel(AbstractBlock $parentBlock, Product $product = null)
+    public function showReviewsCarouselOnProductPage(AbstractBlock $parentBlock, Product $product = null)
     {
-        return $this->renderYotpoProductBlock('reviews_carousel', $parentBlock, $product);
+        return $this->renderYotpoProductBlock('carousel_product_enabled', $parentBlock, $product);
+    }
+
+    /**
+     * Show Carousel in category page
+     *
+     * @param AbstractBlock $parentBlock
+     * @param Product|null $product
+     * @return mixed
+     * @throws LocalizedException
+     */
+    public function showReviewsCarouselOnCategoryPage(AbstractBlock $parentBlock, Product $product = null)
+    {
+        return $this->renderYotpoProductBlock('carousel_category_enabled', $parentBlock, $product);
+    }
+
+    /**
+     * Show Carousel in home page
+     *
+     * @param AbstractBlock $parentBlock
+     * @param Product|null $product
+     * @return mixed
+     * @throws LocalizedException
+     */
+    public function showReviewsCarouselOnHomePage(AbstractBlock $parentBlock, Product $product = null)
+    {
+        return $this->renderYotpoProductBlock('carousel_home_enabled', $parentBlock, $product);
     }
 
     /**
@@ -93,9 +119,35 @@ class Data extends AbstractHelper
      * @return mixed
      * @throws LocalizedException
      */
-    public function showPromotedProducts(AbstractBlock $parentBlock, Product $product = null)
+    public function showPromotedProductsOnProductPage(AbstractBlock $parentBlock, Product $product = null)
     {
-        return $this->renderYotpoProductBlock('promoted_products', $parentBlock, $product);
+        return $this->renderYotpoProductBlock('promoted_products_product_enabled', $parentBlock, $product);
+    }
+
+    /**
+     * Show Promoted Products in category pages
+     *
+     * @param AbstractBlock $parentBlock
+     * @param Product|null $product
+     * @return mixed
+     * @throws LocalizedException
+     */
+    public function showPromotedProductsOnCategoryPages(AbstractBlock $parentBlock, Product $product = null)
+    {
+        return $this->renderYotpoProductBlock('promoted_products_category_enabled', $parentBlock, $product);
+    }
+
+    /**
+     * Show Promoted Products in home pages
+     *
+     * @param AbstractBlock $parentBlock
+     * @param Product|null $product
+     * @return mixed
+     * @throws LocalizedException
+     */
+    public function showPromotedProductsOnHomePage(AbstractBlock $parentBlock, Product $product = null)
+    {
+        return $this->renderYotpoProductBlock('promoted_products_home_enabled', $parentBlock, $product);
     }
 
     /**
