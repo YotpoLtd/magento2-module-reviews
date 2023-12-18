@@ -48,7 +48,7 @@ class AbstractYotpoReviewsSummary
      * @param Product $product
      * @return string
      */
-    protected function _getCategoryBottomLineHtml(Product $product, string $templateType)
+    protected function _getCategoryBottomLineHtml(Product $product, $templateType)
     {
         if ($this->_yotpoConfig->isV3StarRatingWidget()) {
             // phpcs:ignore

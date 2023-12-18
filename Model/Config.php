@@ -15,12 +15,12 @@ use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Config\Model\ResourceModel\Config as ConfigResource;
 use Magento\Review\Block\Product\ReviewRenderer;
 
-enum StarRatingSectionId: string {
-    case PRODUCT = 'product';
-    case CATEGORY = 'collection';
-    case HOME = 'index';
-    case CART = 'cart';
-    case PRODUCT_GRID = 'product-grid';
+class StarRatingSectionId {
+    const PRODUCT = 'product';
+    const CATEGORY = 'collection';
+    const HOME = 'index';
+    const CART = 'cart';
+    const PRODUCT_GRID = 'product-grid';
 }
 
 /**
@@ -313,15 +313,15 @@ class Config extends YotpoCoreConfig
         return $instanceId !== false && $this->isV3Enabled();
     }
 
-    public static function getWidgetSectionId(string | null $sectionId): string {
+    public static function getWidgetSectionId($sectionId) {
         switch ($sectionId) {
             case ReviewRenderer::DEFAULT_VIEW:
             case ReviewRenderer::FULL_VIEW:
-                return StarRatingSectionId::PRODUCT->value;
+                return StarRatingSectionId::PRODUCT;
             case ReviewRenderer::SHORT_VIEW:
-                return StarRatingSectionId::CATEGORY->value;
+                return StarRatingSectionId::CATEGORY;
             default:
-                return StarRatingSectionId::CATEGORY->value;
+                return StarRatingSectionId::CATEGORY;
         }
     }
 }
