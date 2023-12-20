@@ -4,6 +4,7 @@ namespace Yotpo\Reviews\Plugin;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Element\Context;
+use Magento\Review\Block\Product\ReviewRenderer;
 use Yotpo\Reviews\Model\Config as YotpoConfig;
 
 /**
@@ -48,7 +49,7 @@ class AbstractYotpoReviewsSummary
      * @param Product $product
      * @return string
      */
-    protected function _getCategoryBottomLineHtml(Product $product, $templateType)
+    protected function _getCategoryBottomLineHtml(Product $product, $templateType = ReviewRenderer::SHORT_VIEW)
     {
         if ($this->_yotpoConfig->isV3StarRatingWidget()) {
             // phpcs:ignore

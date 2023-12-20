@@ -38,7 +38,7 @@ class ReviewRenderer extends AbstractYotpoReviewsSummary
         $currentProduct = $this->_coreRegistry->registry('current_product');
         if (!$currentProduct || $currentProduct->getId() !== $product->getId()) {
             if ($this->_yotpoConfig->isCategoryBottomlineEnabled()) {
-                return $this->_getCategoryBottomLineHtml($product, $templateType);
+                return $this->_getCategoryBottomLineHtml($product);
             } elseif (!$this->_yotpoConfig->isMdrEnabled()) {
                 return $proceed($product, $templateType, $displayIfNoReviews);
             }

@@ -37,7 +37,7 @@ class ListProduct extends AbstractYotpoReviewsSummary
         }
 
         if ($this->_yotpoConfig->isCategoryBottomlineEnabled()) {
-            return $this->_getCategoryBottomLineHtml($product, $templateType);
+            return $this->_getCategoryBottomLineHtml($product);
         } elseif (!$this->_yotpoConfig->isMdrEnabled()) {
             return $proceed($product, $templateType, $displayIfNoReviews);
         } else {
