@@ -38,13 +38,55 @@
                         <config_path>yotpo/settings/qna_enabled</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
-                    <field id="mdr_enabled" translate="label" type="select" sortOrder="140" showInDefault="1"
+                    <field id="carousel_product_enabled" translate="label" type="select" sortOrder="140" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Reviews Carousel on product pages</label>
+                        <config_path>yotpo/settings/carousel_product_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="carousel_category_enabled" translate="label" type="select" sortOrder="141" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Reviews Carousel on category pages</label>
+                        <config_path>yotpo/settings/carousel_category_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="carousel_home_enabled" translate="label" type="select" sortOrder="141" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Reviews Carousel on home page</label>
+                        <config_path>yotpo/settings/carousel_home_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="promoted_products_product_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Promoted Products on product pages</label>
+                        <config_path>yotpo/settings/promoted_products_product_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="promoted_products_category_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Promoted Products on category pages</label>
+                        <config_path>yotpo/settings/promoted_products_category_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="promoted_products_home_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Promoted Products on home page</label>
+                        <config_path>yotpo/settings/promoted_products_home_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="reviews_tab_enabled" translate="label" type="select" sortOrder="160" showInDefault="1"
+                           showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Enable Reviews Tab</label>
+                        <config_path>yotpo/settings/reviews_tab_enabled</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="mdr_enabled" translate="label" type="select" sortOrder="170" showInDefault="1"
                            showInWebsite="1" showInStore="1" canRestore="1">
                         <label>Hide Adobe Commerce Reviews</label>
                         <config_path>yotpo/settings/mdr_enabled</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
-                    <field id="v3_enabled" translate="label" type="select" sortOrder="150" showInDefault="1"
+                    <field id="v3_enabled" translate="label" type="select" sortOrder="180" showInDefault="1"
                            showInWebsite="1" showInStore="1" canRestore="1">
                         <label>Enable V3 Widgets</label>
                         <config_path>yotpo/reviews/v3_enabled</config_path>
