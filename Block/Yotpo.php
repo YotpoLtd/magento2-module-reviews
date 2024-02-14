@@ -344,7 +344,7 @@ class Yotpo extends Template
     /**
      * Escape tags from string
      *
-     * @param string $str
+     * @param string|null $str
      * @return array<int, mixed>|string
      */
     public function escapeString($str)
