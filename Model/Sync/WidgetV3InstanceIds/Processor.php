@@ -65,7 +65,6 @@ class Processor extends AbstractJobs
         }
         /** @phpstan-ignore-next-line */
         foreach ($storeIds as $storeId) {
-            $this->emulateFrontendArea($storeId);
             if (!$this->yotpoConfig->isEnabled()) {
                 $this->addMessage(
                     'error',
@@ -79,7 +78,7 @@ class Processor extends AbstractJobs
                 continue;
             }
 
-
+            $this->emulateFrontendArea($storeId);
             $this->logger->info(
                 __(
                     'Process widget v3 instance ids for Magento Store ID: %1, Name: %2',
