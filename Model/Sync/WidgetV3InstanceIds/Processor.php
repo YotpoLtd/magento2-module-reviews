@@ -65,7 +65,7 @@ class Processor extends AbstractJobs
         }
         /** @phpstan-ignore-next-line */
         foreach ($storeIds as $storeId) {
-            if (!$this->yotpoConfig->isEnabled()) {
+            if (!$this->yotpoConfig->isEnabled($storeId)) {
                 $this->addMessage(
                     'error',
                     __(
@@ -88,7 +88,7 @@ class Processor extends AbstractJobs
                 []
             );
 
-            $this->processWidgetV3InstanceIds();
+            $this->processWidgetV3InstanceIds($storeId);
             $this->stopEnvironmentEmulation();
         }
     }
@@ -99,20 +99,19 @@ class Processor extends AbstractJobs
      * @return void
      * @throws NoSuchEntityException
      */
-    public function processWidgetV3InstanceIds()
+    public function processWidgetV3InstanceIds($storeId)
     {
-        $storeId = $this->yotpoConfig->getStoreId();
         $currentTime = date('Y-m-d H:i:s');
         //call to API
         $response = $this->getWidgetV3InstanceIds();
         $storeCode = $this->yotpoConfig->getStoreName($storeId);
-        $this->updateLastSyncDate($currentTime);
+        $this->updateLastSyncDate($currentTime, $storeId);
         if ($response->getData('is_success')) {
             $responseData = $response->getData('response');
             $widgetV3InstanceIds = [];
 
             if (empty($responseData['widget_instances'])) {
-                $this->yotpoConfig->deleteConfig('sync_widget_v3_instance_ids_data');
+                $this->yotpoConfig->deleteConfig('sync_widget_v3_instance_ids_data', null, $storeId);
                 $this->addMessage(
                     'error',
                     __(
@@ -132,7 +131,7 @@ class Processor extends AbstractJobs
             }
 
             $serializedData = json_encode($widgetV3InstanceIds);
-            $this->yotpoConfig->saveConfig('sync_widget_v3_instance_ids_data', (string)$serializedData);
+            $this->yotpoConfig->saveConfig('sync_widget_v3_instance_ids_data', (string)$serializedData, $storeId);
             $this->logger->info('Widget v3 instances id sync - success', []);
             $this->addMessage(
                 'success',
@@ -173,9 +172,9 @@ class Processor extends AbstractJobs
      * @return void
      * @throws NoSuchEntityException
      */
-    public function updateLastSyncDate($currentTime)
+    public function updateLastSyncDate($currentTime, $storeId)
     {
-        $this->yotpoConfig->saveConfig('widget_v3_instance_ids_last_sync_time', $currentTime);
+        $this->yotpoConfig->saveConfig('widget_v3_instance_ids_last_sync_time', $currentTime, $storeId);
     }
 
     /**
