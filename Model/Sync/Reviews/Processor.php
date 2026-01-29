@@ -1,4 +1,5 @@
 <?php
+
 namespace Yotpo\Reviews\Model\Sync\Reviews;
 
 use Magento\Framework\App\ResourceConnection;
@@ -57,7 +58,7 @@ class Processor extends AbstractJobs
      * @param string|null $toDate
      * @return array<mixed>
      */
-    public function getMetrics(int $storeId, string $fromDate = null, string $toDate = null): array
+    public function getMetrics(int $storeId, ?string $fromDate = null, ?string $toDate = null): array
     {
         $return = [];
         try {
@@ -86,7 +87,6 @@ class Processor extends AbstractJobs
 
             $this->stopEnvironmentEmulation();
             $this->logger->info(__('API Issue - Reason is %1', 323232));
-
         } catch (\Exception $e) {
             $this->logger->info(__('API Issue - Reason is %1', $e->getMessage()));
         }
