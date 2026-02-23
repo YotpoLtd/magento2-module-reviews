@@ -1,4 +1,5 @@
 <?php
+
 namespace Yotpo\Reviews\Block\Adminhtml\Report;
 
 use Magento\Backend\Block\Template\Context;
@@ -126,7 +127,7 @@ class Reviews extends Template
      * @param string|null $default
      * @return mixed
      */
-    public function getPeriod(string $default = null)
+    public function getPeriod(?string $default = null)
     {
         return $this->getRequest()->getParam('period', ($default ?: $this->_defaultPeriod));
     }
@@ -282,11 +283,11 @@ class Reviews extends Template
         if (!isset($metrics['emails_sent'])) {
             $emailsSent = "-";
         } elseif ($metrics['emails_sent'] > 999999) {
-            $emailsSent = number_format((float)($metrics['emails_sent']/1000000), 1, '.', "") . 'M';
+            $emailsSent = number_format((float)($metrics['emails_sent'] / 1000000), 1, '.', "") . 'M';
         } elseif ($metrics['emails_sent'] > 99999) {
-            $emailsSent = number_format((float)($metrics['emails_sent']/1000), 0, '.', "") . 'K';
+            $emailsSent = number_format((float)($metrics['emails_sent'] / 1000), 0, '.', "") . 'K';
         } elseif ($metrics['emails_sent'] > 999) {
-            $emailsSent = number_format((float)($metrics['emails_sent']/1000), 1, '.', "") . 'K';
+            $emailsSent = number_format((float)($metrics['emails_sent'] / 1000), 1, '.', "") . 'K';
         } else {
             $emailsSent = round((float)$metrics['emails_sent'], 2);
         }
@@ -337,8 +338,8 @@ class Reviews extends Template
         );
         $button->setData(
             [
-            'id' => 'launch_yotpo_button',
-            'class' => 'launch-yotpo-button yotpo-cta-add-arrow',
+                'id' => 'launch_yotpo_button',
+                'class' => 'launch-yotpo-button yotpo-cta-add-arrow',
             ]
         );
         if (!($appKey = $this->getAppKey())) {

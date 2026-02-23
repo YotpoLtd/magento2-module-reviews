@@ -1,4 +1,5 @@
 <?php
+
 namespace Yotpo\Reviews\Model;
 
 use Magento\Eav\Model\Entity;
@@ -15,7 +16,8 @@ use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Config\Model\ResourceModel\Config as ConfigResource;
 use Magento\Review\Block\Product\ReviewRenderer;
 
-class StarRatingSectionId {
+class StarRatingSectionId
+{
     const PRODUCT = 'product';
     const CATEGORY = 'collection';
     const HOME = 'index';
@@ -123,7 +125,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isWidgetEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isWidgetEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return ($this->getConfig('widget_enabled', $scopeId, $scope)) ? true : false;
     }
@@ -137,7 +139,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isCategoryBottomlineEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isCategoryBottomlineEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return ($this->getConfig('category_bottomline_enabled', $scopeId, $scope)) ? true : false;
     }
@@ -151,7 +153,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isBottomlineEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isBottomlineEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return ($this->getConfig('bottomline_enabled', $scopeId, $scope)) ? true : false;
     }
@@ -165,7 +167,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isBottomlineQnaEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isBottomlineQnaEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return (bool)$this->getConfig('qna_enabled', $scopeId, $scope);
     }
@@ -179,7 +181,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isCarouselOnCategoryPagesEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isCarouselOnCategoryPagesEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return (bool)$this->getConfig('carousel_category_enabled', $scopeId, $scope);
     }
@@ -193,7 +195,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isCarouselOnHomePagesEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isCarouselOnHomePagesEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return (bool)$this->getConfig('carousel_home_enabled', $scopeId, $scope);
     }
@@ -207,7 +209,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isCarouselOnProductPagesEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isCarouselOnProductPagesEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return (bool)$this->getConfig('carousel_product_enabled', $scopeId, $scope);
     }
@@ -221,7 +223,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isPromotedProductsOnProductPageEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isPromotedProductsOnProductPageEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return (bool)$this->getConfig('promoted_products_product_enabled', $scopeId, $scope);
     }
@@ -235,7 +237,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isPromotedProductsOnCategoryPagesEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isPromotedProductsOnCategoryPagesEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return (bool)$this->getConfig('promoted_products_category_enabled', $scopeId, $scope);
     }
@@ -249,7 +251,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isPromotedProductsOnHomePageEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isPromotedProductsOnHomePageEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return (bool)$this->getConfig('promoted_products_home_enabled', $scopeId, $scope);
     }
@@ -263,7 +265,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isReviewsTabEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isReviewsTabEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return (bool)$this->getConfig('reviews_tab_enabled', $scopeId, $scope);
     }
@@ -277,7 +279,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isMdrEnabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE)
+    public function isMdrEnabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE)
     {
         return (bool)$this->getConfig('mdr_enabled', $scopeId, $scope);
     }
@@ -291,7 +293,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isV3Enabled(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE)
+    public function isV3Enabled(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE)
     {
         return (bool)$this->getConfig('v3_enabled', $scopeId, $scope);
     }
@@ -305,7 +307,7 @@ class Config extends YotpoCoreConfig
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
-    public function isActivated(int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
+    public function isActivated(?int $scopeId = null, string $scope = ScopeInterface::SCOPE_STORE): bool
     {
         return $this->isEnabled($scopeId, $scope) && $this->isAppKeyAndSecretSet($scopeId, $scope);
     }
@@ -418,7 +420,8 @@ class Config extends YotpoCoreConfig
         return $instanceId !== false && $this->isV3Enabled();
     }
 
-    public static function getWidgetSectionId($sectionId) {
+    public static function getWidgetSectionId($sectionId)
+    {
         switch ($sectionId) {
             case ReviewRenderer::DEFAULT_VIEW:
             case ReviewRenderer::FULL_VIEW:
