@@ -47,7 +47,8 @@ class Reviews extends Action
         if ($appKey) {
             $url = 'https://yap.yotpo.com/?utm_source=MagentoAdmin_ReportingReviews#/moderation/reviews';
         } else {
-            $url = 'https://www.yotpo.com/integrations/adobe-commerce-magento/?utm_source=MagentoAdmin_ReportingReviews';
+            $url = 'https://www.yotpo.com/integrations/
+            adobe-commerce-magento/?utm_source=MagentoAdmin_ReportingReviews';
         }
 
         /** @var Redirect $resultRedirect */
