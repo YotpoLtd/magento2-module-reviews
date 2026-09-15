@@ -20,10 +20,10 @@ $escaper = $escaper ?? $block;
 <!--/ Yotpo - Add body class -->
 <!-- Yotpo - Widget Script -->
 <?php if ($block->isV3ReviewsWidget() || $block->isV3StarRatingWidget()): ?>
-    <script type="text/javascript" src="https://cdn-widgetsrepository.yotpo.com/v1/loader/<?= $block->getAppKey() ?>" async></script>
+    <script type="text/javascript" src="https://cdn-widgetsrepository.yotpo.com/v1/loader/<?= $escaper->escapeHtmlAttr($block->getAppKey()) ?>" async></script>
 <?php else: ?>
     <script>
-        (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="<?= $block->getYotpoWidgetUrl() ?>";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+        (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="<?= $escaper->escapeUrl($block->getYotpoWidgetUrl()) ?>";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
     </script>
 <?php endif; ?>
 <!--/ Yotpo - Widget Script -->

@@ -10,12 +10,6 @@ use Magento\Framework\View\Element\Template\Context;
 use Yotpo\Reviews\Model\Config as YotpoConfig;
 use Magento\Framework\View\Element\Template;
 
-enum WidgetsLocations: string {
-    case HOME = 'cms_index_index';
-    case CATEGORY = 'catalog_category_view';
-    case OTHER = '';
-}
-
 /**
  * Class Yotpo - Block file for Yotpo Reviews Widget
  */
