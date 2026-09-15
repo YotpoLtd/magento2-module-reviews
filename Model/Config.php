@@ -16,15 +16,6 @@ use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Config\Model\ResourceModel\Config as ConfigResource;
 use Magento\Review\Block\Product\ReviewRenderer;
 
-class StarRatingSectionId
-{
-    const PRODUCT = 'product';
-    const CATEGORY = 'collection';
-    const HOME = 'index';
-    const CART = 'cart';
-    const PRODUCT_GRID = 'product-grid';
-}
-
 /**
  * Class Config - Get Reviews related config values
  */

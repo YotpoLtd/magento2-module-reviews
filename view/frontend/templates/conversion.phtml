@@ -18,19 +18,16 @@ $escaper = $escaper ?? $block;
             let e=document.createElement("script");
             e.type="text/javascript",
             e.async=true,
-            <?php // phpcs:ignore ?>
-            e.src="<?= $block->getYotpoWidgetUrl() ?>";
+            e.src="<?= $escaper->escapeUrl($block->getYotpoWidgetUrl()) ?>";
             let t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
     </script>
     <script>
-        <?php // phpcs:ignore ?>
-        yotpoTrackConversionData = <?= $jsonData ?>;
+        yotpoTrackConversionData = <?= /* @noEscape */ $jsonData ?>;
     </script>
 <?php endif; ?>
 <?php if (($noScriptSrc = $block->getNoscriptSrc())): ?>
     <noscript>
-        <?php // phpcs:ignore ?>
-        <img src="<?= $noScriptSrc ?>" width="1" height="1">
+        <img src="<?= $escaper->escapeUrl($noScriptSrc) ?>" width="1" height="1">
     </noscript>
 <?php endif; ?>
 <!--/ Yotpo - Conversion -->
