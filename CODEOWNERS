@@ -1,1 +1,21 @@
-* @YotpoLtd/Orbits-admins
+# Only high-risk paths need a code-owner review: the human-required tier in
+# .claude/protected-files.json, plus the agent instruction files. Everything
+# else needs only the normal approval. No `*` catch-all: with code-owner review
+# required, a catch-all blocks every PR from auto-merging.
+
+/composer.json @YotpoLtd/Orbits-admins
+/registration.php @YotpoLtd/Orbits-admins
+/etc/module.xml @YotpoLtd/Orbits-admins
+/etc/db_schema.xml @YotpoLtd/Orbits-admins
+/etc/db_schema_whitelist.json @YotpoLtd/Orbits-admins
+/etc/acl.xml @YotpoLtd/Orbits-admins
+/etc/csp_whitelist.xml @YotpoLtd/Orbits-admins
+/etc/config.xml @YotpoLtd/Orbits-admins
+/LICENSE.txt @YotpoLtd/Orbits-admins
+/LICENSE_AFL.txt @YotpoLtd/Orbits-admins
+/.github/workflows/ @YotpoLtd/Orbits-admins
+/.agents/adlc/ @YotpoLtd/Orbits-admins
+/.claude/ @YotpoLtd/Orbits-admins
+/CLAUDE.md @YotpoLtd/Orbits-admins
+/AGENTS.md @YotpoLtd/Orbits-admins
+/CODEOWNERS @YotpoLtd/Orbits-admins

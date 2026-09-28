@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "matching": "If a path matches more than one tier's globs, the most restrictive tier applies: human-required > review-required > auto-safe.",
+  "tiers": {
+    "human-required": {
+      "description": "Agent CANNOT modify without a human. Merchant-impacting, irreversible or published. Document for CODEOWNERS and agent instructions.",
+      "paths": [
+        "composer.json",
+        "registration.php",
+        "etc/module.xml",
+        "etc/db_schema.xml",
+        "etc/db_schema_whitelist.json",
+        "etc/acl.xml",
+        "etc/csp_whitelist.xml",
+        "etc/config.xml",
+        "LICENSE.txt",
+        "LICENSE_AFL.txt",
+        ".github/workflows/**",
+        ".agents/adlc/**",
+        ".claude/**",
+        "CODEOWNERS"
+      ]
+    },
+    "review-required": {
+      "description": "Agent can modify but the PR requires human approval, including agent instructions.",
+      "paths": [
+        "Block/**",
+        "Controller/**",
+        "Helper/**",
+        "Model/**",
+        "Plugin/**",
+        "etc/**",
+        "view/**",
+        "Test/Mftf/Suite/**",
+        "CLAUDE.md",
+        "AGENTS.md",
+        ".github/pull_request_template.md"
+      ]
+    },
+    "auto-safe": {
+      "description": "Agent can freely modify. Auto-merge eligible.",
+      "paths": [
+        "Test/Mftf/ActionGroup/**",
+        "Test/Mftf/Data/**",
+        "Test/Mftf/Section/**",
+        "Test/Mftf/Test/**",
+        "docs/**",
+        "**/*.md",
+        ".gitignore"
+      ]
+    }
+  }
+}
