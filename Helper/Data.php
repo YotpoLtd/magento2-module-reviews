@@ -27,8 +27,11 @@ class Data extends AbstractHelper
         /**
          * @var Template $template
          */
-        $template = $parentBlock->getLayout()->createBlock(\Yotpo\Reviews\Block\Yotpo::class);
-        $template->setTemplate('Yotpo_Reviews::' . $blockName . '.phtml');
+        $template = $parentBlock->getLayout()->createBlock(
+            \Yotpo\Reviews\Block\Yotpo::class,
+            '',
+            ['data' => ['template' => 'Yotpo_Reviews::' . $blockName . '.phtml']]
+        );
         $template->setAttribute('product', $product);
         $template->setAttribute('fromHelper', true);
         return $template->toHtml();
